@@ -34,7 +34,7 @@ class App extends Component {
             console.log("Type of state : ",typeof this.state.pokemonCatched)
             this.setState({
                 //pokemonCatched : this.state.pokemonCatched.push(allInfos)
-                pokemonCatched : this.state.pokemonCatched
+                pokemonCatched : [...this.state.pokemonCatched, allInfos]
             })
         }else{
             this.setState({
