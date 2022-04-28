@@ -65,10 +65,13 @@ code {
   flex-basis: 100px;
   width: 100%;
 }
-.filter-button{
+.Filter button{
   padding: .5em 1em;
   width: 100%;
+  border: 1px solid grey;
+  border-radius: 2px;
+  cursor: pointer;
 }
-.Filter.active{
+.Filter button.active{
   background-color: #b0f2b6;
 }

@@ -1,14 +1,6 @@
 import React, { Component } from 'react';
 
 class Pokemon extends Component {
-  constructor() {
-    super();
-    this.displayName = this.displayName.bind(this)
-  }
-
-  displayName() {
-    console.log('I am ', this.props.name);
-  }
 
   render() {
     const { name, weight, src, action } = this.props;

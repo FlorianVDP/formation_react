@@ -1,20 +1,12 @@
 import React, {Component} from "react";
 
 class Filter extends Component{
-    constructor() {
-        super();
-        this.addCurrentClass = this.addCurrentClass.bind(this);
-    }
-    addCurrentClass(){
-        document.querySelectorAll(".filter-button").forEach(button =>{
-            button.classList.remove("active");
-        })
-    }
     render() {
-        const {label, filter} = this.props;
+        const {label, filter, buttonSate} = this.props;
+
         return(
             <li className={"Filter"}>
-                <button className={"filter-button"} onClick={filter}>{label}</button>
+                <button className={buttonSate} onClick={filter}>{label}</button>
             </li>
         )
     }
