@@ -14,9 +14,15 @@ code {
   color: red;
 }
 
-.App {}
+.App {
 
-.list {
+}
+#root{
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+.list, .PokemonList {
   display: flex;
   flex-wrap: wrap;
 }
@@ -48,4 +54,21 @@ code {
   margin: 1rem;
   color: unset;
   font-size: 1.5rem;
+}
+.Filters{
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5em 2em;
+  padding: 0 1em;
+}
+.Filter{
+  flex-basis: 100px;
+  width: 100%;
+}
+.filter-button{
+  padding: .5em 1em;
+  width: 100%;
+}
+.Filter.active{
+  background-color: #b0f2b6;
 }
