@@ -4,6 +4,7 @@ import TrainedPokemon from "./TrainedPokemon";
 class Trainer extends React.Component {
     render() {
         const {name, address, bag} = this.props
+
         const instances = bag.map(item =>{
             return(
                 <TrainedPokemon

@@ -14,6 +14,23 @@ class TrainedPokemon extends Component{
             exp : this.state.exp + 10
         })
     }
+
+    componentDidMount() {
+        setInterval(
+            ()=>{
+                this.setState({
+                    exp : this.state.exp + 100
+                })
+            }, 1000
+        )
+    }
+
+    componentWillUnmount() {
+        this.setState({
+            exp : 0
+        })
+    }
+
     render() {
         const { name, weight, src } = this.props;
         const { exp } = this.state;
