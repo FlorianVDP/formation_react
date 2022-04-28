@@ -5,7 +5,8 @@ class TrainedPokemon extends Component{
         super();
 
         this.state = {
-            exp: 0
+            exp: 0,
+            idInterval: null,
         }
         this.trainPokemon = this.trainPokemon.bind(this);
     }
@@ -16,31 +17,28 @@ class TrainedPokemon extends Component{
     }
 
     componentDidMount() {
-        setInterval(
+        const idInterval = setInterval(
             ()=>{
                 this.setState({
                     exp : this.state.exp + 100
                 })
             }, 1000
-        )
-    }
-
-    componentWillUnmount() {
+        );
         this.setState({
-            exp : 0
+            idInterval
         })
     }
 
+    componentWillUnmount() {
+        clearInterval(this.state.idInterval);
+    }
+
     render() {
-        const { name, weight, src } = this.props;
+        const { name, weight, src, action } = this.props;
         const { exp } = this.state;
 
-        function displayName() {
-            console.log('Je suis', name);
-        }
-
         return (
-            <li className='TrainedPokemon' onClick={displayName} onMouseMove={this.trainPokemon}>
+            <li className='TrainedPokemon' onClick={action} onMouseMove={this.trainPokemon}>
                 <div className='name'>{name}</div>
                 <div className='weight'>{weight}</div>
                 {src && <img src={src} alt={name} />}

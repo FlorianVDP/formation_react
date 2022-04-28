@@ -3,16 +3,18 @@ import Trainer from "./Trainer";
 import PokemonList from "./PokemonList";
 import Filters from "./Filters";
 import fetchPokemons from "../utils/fetchPokemon";
+
 class App extends Component {
     constructor() {
         super();
         this.state = {
             data: null,
             filterByType : null,
-            pokemonCatched : null,
+            bag : [],
         }
         this.changeFilter = this.changeFilter.bind(this);
         this.catchThemAll = this.catchThemAll.bind(this);
+        this.goodByPokemon = this.goodByPokemon.bind(this);
     }
 
     changeFilter(type){
@@ -26,21 +28,28 @@ class App extends Component {
             })
         }
     }
-/*
------------------------ Trouver la solution ici
- */
+
     catchThemAll(allInfos){
-        if (this.state.pokemonCatched){
-            console.log("Type of state : ",typeof this.state.pokemonCatched)
+        //let newPokemon = {...allInfos} // {... n} Créé un nouvel objet
+        //newPokemon.trainedId = Date.now();
+
+        const newPokemon = {...allInfos, trainedId : Date.now()} // Autre facon
+
+        if (this.state.bag){
             this.setState({
-                //pokemonCatched : this.state.pokemonCatched.push(allInfos)
-                pokemonCatched : [...this.state.pokemonCatched, allInfos]
+                bag : [...this.state.bag, newPokemon]
             })
         }else{
             this.setState({
-                pokemonCatched : [allInfos]
+                bag : [newPokemon]
             })
         }
+    }
+
+    goodByPokemon(id){
+        this.setState({
+            bag : this.state.bag.filter(item => item.trainedId !== id )
+        })
     }
 
     componentDidMount() {
@@ -60,14 +69,9 @@ class App extends Component {
     }
 
     render() {
-        //const {data} = this.props;
 
         const data = this.state.data ? this.state.data : [];
-        //const bag = data.length > 0 ? [data[0]] : []
-        const bag = this.state.pokemonCatched ? this.state.pokemonCatched : []
-        console.log("What's in my bag : ", bag)
-        //const bag = this.state.pokemonCatched;
-
+        const bag = this.state.bag ? this.state.bag : []
         // DataTypes
         const deeptypes = data.map(item => item.types.map(t => t.type.name));
         const flatTypes = deeptypes.flat();
@@ -85,7 +89,7 @@ class App extends Component {
 
         return(
             <>
-                <Trainer name={"Florian"} address={"8 rue du Bourg-palette"} bag={bag} />
+                <Trainer name={"Florian"} address={"8 rue du Bourg-palette"} bag={bag} action={this.goodByPokemon} />
                 <Filters data={dataTypes} filter={this.changeFilter} type={this.state.filterByType} />
                 <PokemonList data={dataFiltred} action={this.catchThemAll}/>
             </>
