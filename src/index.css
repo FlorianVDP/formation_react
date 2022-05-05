@@ -1,32 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Water+Brush&display=swap');
+
+:root{
+  --main-bg-color: #3A5872;
+  --white-color-project : #f8f0da;
+}
 body {
-  margin: 0;
+  margin: 1em;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
     'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--main-bg-color);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cg %3E%3Cpolygon fill='%231b3a54' points='100 57.1 64 93.1 71.5 100.6 100 72.1'/%3E%3Cpolygon fill='%23284560' points='100 57.1 100 72.1 128.6 100.6 136.1 93.1'/%3E%3Cpolygon fill='%231b3a54' points='100 163.2 100 178.2 170.7 107.5 170.8 92.4'/%3E%3Cpolygon fill='%23284560' points='100 163.2 29.2 92.5 29.2 107.5 100 178.2'/%3E%3Cpath fill='%2334516C' d='M100 21.8L29.2 92.5l70.7 70.7l70.7-70.7L100 21.8z M100 127.9L64.6 92.5L100 57.1l35.4 35.4L100 127.9z'/%3E%3Cpolygon fill='%231b3a54' points='0 157.1 0 172.1 28.6 200.6 36.1 193.1'/%3E%3Cpolygon fill='%23284560' points='70.7 200 70.8 192.4 63.2 200'/%3E%3Cpolygon fill='%2334516C' points='27.8 200 63.2 200 70.7 192.5 0 121.8 0 157.2 35.3 192.5'/%3E%3Cpolygon fill='%23284560' points='200 157.1 164 193.1 171.5 200.6 200 172.1'/%3E%3Cpolygon fill='%231b3a54' points='136.7 200 129.2 192.5 129.2 200'/%3E%3Cpolygon fill='%2334516C' points='172.1 200 164.6 192.5 200 157.1 200 157.2 200 121.8 200 121.8 129.2 192.5 136.7 200'/%3E%3Cpolygon fill='%231b3a54' points='129.2 0 129.2 7.5 200 78.2 200 63.2 136.7 0'/%3E%3Cpolygon fill='%2334516C' points='200 27.8 200 27.9 172.1 0 136.7 0 200 63.2 200 63.2'/%3E%3Cpolygon fill='%23284560' points='63.2 0 0 63.2 0 78.2 70.7 7.5 70.7 0'/%3E%3Cpolygon fill='%2334516C' points='0 63.2 63.2 0 27.8 0 0 27.8'/%3E%3C/g%3E%3C/svg%3E");
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
-
 .name {
   color: red;
 }
-
 .App {
 
 }
 #root{
   display: flex;
   flex-direction: column;
-  gap: 2em;
+  //gap: 2em;
 }
 .list, .PokemonList {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: 1em;
 }
-
+.bag{
+  display: flex;
+  gap: 1em;
+}
 .Pokemon,
 .TrainedPokemon {
   flex: 0 0 7rem;
@@ -35,38 +45,95 @@ code {
   align-items: center;
   width: fit-content;
   padding: 1rem;
-  margin: 1rem;
-  border: 1px solid black;
+  background-color: var(--white-color-project);
+  border: 10px solid rgba(255,255,255,.25);
+  box-sizing: content-box;
+  transition: all ease-in 100ms;
+  position: relative;
 }
+.close{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  border: 1px solid red;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: red;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+}
+.close:hover{
+  background-color: red;
+  color: white;
+}
+.close svg{
 
+}
+.Pokemon{
+  cursor: pointer;
+}
+.Pokemon:hover,
+.TrainedPokemon:hover {
+  border: 10px solid white;
+}
 .Pokemon .name, .TrainedPokemon .name {
-  font-size: 1.3rem;
+  font-size: 2rem;
+  color: var(--main-bg-color);
+  font-weight: 600;
+  font-family: 'Water Brush', cursive;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  box-sizing: border-box;
 }
-
+.TrainedPokemon img{
+  cursor: grab;
+}
+.name::placeholder{
+  padding: 10px 20px;
+}
 .Trainer {
   display: flex;
-  align-items: baseline;
-  background: lightblue;
-
+  align-items: stretch;
+  background: var(--white-color-project);
+  min-height: 260px;
+  gap: 2em;
 }
-
-.Trainer .name {
-  margin: 1rem;
-  color: unset;
-  font-size: 1.5rem;
+.Trainer .infos{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  box-sizing: border-box;
+  background-color: white;
+  padding: 2em;
+  width: 100%;
+  max-width: 250px;
 }
-
+.Trainer div.name {
+  color: var(--main-bg-color);
+  font-size: 3rem;
+  font-weight: 600;
+  font-family: 'Water Brush', cursive;
+}
 .Trainer ul.bag{
   display: flex;
   overflow-y: hidden;
   overflow-x: scroll;
+  padding: 2em;
 }
-
 .Filters{
   display: flex;
   flex-wrap: wrap;
   gap: .5em 2em;
-  padding: 0 1em;
+  margin: 2em 0;
+  justify-content: center;
 }
 .Filter{
   flex-basis: 100px;
@@ -75,10 +142,31 @@ code {
 .Filter button{
   padding: .5em 1em;
   width: 100%;
-  border: 1px solid grey;
+  border: 5px solid var(--white-color-project);
   border-radius: 2px;
   cursor: pointer;
+  background: var(--white-color-project);
 }
 .Filter button.active{
-  background-color: #b0f2b6;
+  border: 5px solid white;
+}
+.loader{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100vh - 324px);
+}
+.nbPokemons{
+  display: inline-flex;
+  gap: .5em;
+  align-items: center;
+  padding: .5em 1em;
+  border: 1px solid white;
+  align-self: center;
+  border-radius: 100px;
+  background-color: white;
+}
+.nbPokemons svg{
+  color: red;
 }

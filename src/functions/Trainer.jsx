@@ -1,10 +1,10 @@
 import React from "react";
 import TrainedPokemon from "./TrainedPokemon";
+import {MdCatchingPokemon} from "react-icons/all";
+function Trainer (props) {
 
-class Trainer extends React.Component {
-    render() {
-        const {name, address, bag, action} = this.props
-        console.log(bag.length)
+        const {name, address, bag, action} = props;
+
         const instances = bag.map((item) =>{
             return(
                 <TrainedPokemon
@@ -21,15 +21,17 @@ class Trainer extends React.Component {
                 {instances}
             </ul>
         );
-
+        
         return(
             <div className={"Trainer"}>
-                <div className={"name"}>{name}</div>
-                <div className={"address"}>{address}</div>
+                <div className="infos">
+                    <div className={"name"}>{name}</div>
+                    <div className={"address"}>{address}</div>
+                    <div className="nbPokemons"><MdCatchingPokemon />{bag.length}</div>
+                </div>
                 {bag.length !== 0 ? bagInstance : null}
             </div>
         )
-    }
 }
 
 export default Trainer

@@ -3,7 +3,7 @@ import Trainer from "./Trainer";
 import PokemonList from "./PokemonList";
 import Filters from "./Filters";
 import fetchPokemons from "../utils/fetchPokemon";
-import BeatLoader from "react-spinners/BeatLoader";
+import PuffLoader from "react-spinners/PuffLoader";
 
 class App extends Component {
     constructor() {
@@ -21,13 +21,13 @@ class App extends Component {
 
     changeFilter(type){
         if (this.state.filterByType === type){
-            this.setState(
-                state => ({ filterByType : null})
-            );
+            this.setState({
+                filterByType : null
+            })
         }else{
-            this.setState(
-                state => ({ filterByType : type})
-            );
+            this.setState({
+                filterByType : type
+            })
         }
     }
 
@@ -95,8 +95,7 @@ class App extends Component {
                 <PokemonList data={dataFiltred} action={this.catchThemAll}/>
             </>
         );
-        const loader = <div className={"loader"}><BeatLoader color={"#ffffff"} size={150}/></div>
-
+        const loader = <div className={"loader"}><PuffLoader color={"#ffffff"} size={250}/></div>
 
         return(
             <>
